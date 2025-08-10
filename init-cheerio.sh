@@ -1,4 +1,4 @@
 #!/bin/sh
-# echo "Installing cheerio..."
-cd /usr/local/lib/node_modules/n8n
-pnpm add cheerio --prefer-offline --ignore-workspace-root-check || true
+# echo "Installing cheerio for Code nodes..."
+cd /usr/local/lib/node_modules/n8n/node_modules/@n8n/task-runner
+pnpm add cheerio --prefer-offline || true
