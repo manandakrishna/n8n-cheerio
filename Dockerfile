@@ -1,10 +1,6 @@
 FROM n8nio/n8n:latest
 
 USER root
-
-# Change into the n8n app directory and install cheerio there
-WORKDIR /usr/local/lib/node_modules/n8n
-RUN npm install cheerio --no-save
-
+COPY init-cheerio.sh /docker-entrypoint-init.d/init-cheerio.sh
+RUN chmod +x /docker-entrypoint-init.d/init-cheerio.sh
 USER node
-WORKDIR /data
