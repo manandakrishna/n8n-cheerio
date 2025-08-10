@@ -1,4 +1,6 @@
-#!/bin/sh
-# echo "Installing cheerio into @n8n/task-runner sandbox..."
-cd /usr/local/lib/node_modules/n8n/node_modules/.pnpm/@n8n+task-runner@*
-pnpm add cheerio --prefer-offline || true
+FROM n8nio/n8n:latest
+
+USER root
+COPY init-cheerio.sh /docker-entrypoint-init.d/init-cheerio.sh
+RUN chmod +x /docker-entrypoint-init.d/init-cheerio.sh
+USER node
