@@ -1,6 +1,5 @@
-FROM n8nio/n8n:latest
-
-USER root
-COPY init-cheerio.sh /docker-entrypoint-init.d/init-cheerio.sh
-RUN chmod +x /docker-entrypoint-init.d/init-cheerio.sh
-USER node
+#!/bin/sh
+echo "Installing cheerio..."
+cd /usr/local/lib/node_modules/n8n
+# This ensures cheerio goes into ./node_modules alongside other n8n deps
+pnpm add cheerio --prefer-offline --ignore-workspace-root-check || true
