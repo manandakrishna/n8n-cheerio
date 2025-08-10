@@ -1,10 +1,13 @@
 FROM n8nio/n8n:latest
 
-# Switch to root to install packages
+# Run everything as root to avoid EACCES
 USER root
 
-# Install cheerio without modifying package-lock.json
-RUN npm install cheerio --no-save
+# Install cheerio without touching lockfiles
+RUN npm install cheerio --no-save --prefix /home/node
 
-# Switch back to node user
+# Ensure ownership is correct for the node user
+RUN chown -R node:node /home/node
+
+# Switch back to node
 USER node
