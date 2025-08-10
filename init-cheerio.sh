@@ -1,5 +1,4 @@
 #!/bin/sh
-# This script runs automatically at container start
-echo "Installing cheerio..."
+# echo "Installing cheerio..."
 cd /usr/local/lib/node_modules/n8n
-npm install cheerio --no-save || true
+pnpm add cheerio --prefer-offline --ignore-workspace-root-check || true
